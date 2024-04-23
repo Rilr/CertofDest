@@ -14,9 +14,11 @@ layout = [[sg.Text('HDD Data:')],
           
           [sg.Button('Ok'), sg.Button('Cancel')]]
 
-window = sg.Window('HDD Data to Word', layout)
+window = sg.Window('CoD Data Import', layout)
 event, values = window.read()
-outpathFile = values['outpath'] + '/cert-of-destruction.docx'
+
+outpathFolder = values['outpath']
+outpathFile = outpathFolder + '/cert-of-destruction.docx'
 
 hddData = {
     'file_path': values['inpath'],
