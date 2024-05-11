@@ -1,5 +1,7 @@
 import PySimpleGUI as sg
 import pandas as pd
+import os
+import sys
 from docx import Document
 from docx.enum.section import WD_ORIENT
 from docx.enum.table import WD_TABLE_ALIGNMENT
@@ -35,7 +37,7 @@ def main():
         if event == 'Generate Template':
             generate_template()
             break
-        if event == 'Create Certificates':
+        if event == 'Create Certificates' and values['-IN-'] != '':
             # Read the CSV file
             df = pd.read_csv(values['-IN-'])
             col_labels = df.columns
@@ -79,8 +81,11 @@ def main():
                 # Add a page break after each table
                 doc.add_page_break()
             # Save the document
-            doc.save('output.docx')
+            doc.save('Certificate.docx')
             sg.popup('Certificates created successfully!', title='Success')
+            break
+        else:
+            sg.popup('Nothing to generate!', title='Error')
             break
 if __name__ == '__main__':
     main()
