@@ -1,7 +1,5 @@
 import PySimpleGUI as sg
 import pandas as pd
-import os
-import sys
 from docx import Document
 from docx.enum.section import WD_ORIENT
 from docx.enum.table import WD_TABLE_ALIGNMENT
@@ -20,7 +18,14 @@ doc = Document('codd.docx')
 
 def generate_template():
     # Create a new dataframe with the desired headers
-    headers = ['Originating Device', 'Brand', 'Model', 'Capacity', 'Serial Number', 'Manufacture Date', 'Date of Destruction', 'Method of Destruction']
+    headers = ['Originating Device', 
+               'Drive Brand', 
+               'Drive Model', 
+               'Drive Capacity', 
+               'Serial Number', 
+               'Manufacture Date', 
+               'Date of Destruction', 
+               'Method of Destruction']
     template_df = pd.DataFrame(columns=headers)
     
     # Save the dataframe as a CSV file
